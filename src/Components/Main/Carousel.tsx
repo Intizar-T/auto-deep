@@ -54,7 +54,7 @@ class Carousel extends Component<CarouselProps, DefinedState> {
 
   render() {
     return (
-      <div className="ml-4">
+      <div className="">
         <div className="w-full h-72 flex overflow-hidden relative">
           <AiOutlineLeft
             onClick={this.prevSlide}
