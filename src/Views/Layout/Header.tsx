@@ -11,25 +11,29 @@ function Header() {
 
   const Menus = ["Communities", "Competitions", "Learning"];
   return (
-    <Navbar className="mx-auto w-full max-w-none z-[9999]">
+    <Navbar className="mx-auto w-full max-w-none z-[9999] ml-4">
       <div className="mx-auto flex flex-row flex-wrap items-center justify-between">
         {/* Menus (DeepMeta, Communities, Competitions, Learning, Ranking, More) */}
         <div className="flex flex-[0_0_50%] justify-start items-center">
           {/* Logo */}
-          <BaseButton className="text-transform: normal-case">
-            <Typography variant="h5" className="" color="blue">
-              AutoDeep
-            </Typography>
-          </BaseButton>
+          <a href="/">
+            <BaseButton className="text-transform: normal-case">
+              <Typography variant="h5" className="" color="blue">
+                AutoDeep
+              </Typography>
+            </BaseButton>
+          </a>
 
           {/* Communities, Competetions, and Learning buttons */}
           {Menus.map((menu) => {
             return (
-              <BaseButton className="text-transform: normal-case">
-                <Typography variant="h6" color="gray" className="">
-                  {menu}
-                </Typography>
-              </BaseButton>
+              <a href={menu === "Competitions" ? "/competitions" : "/"}>
+                <BaseButton className="text-transform: normal-case">
+                  <Typography variant="h6" color="gray" className="">
+                    {menu}
+                  </Typography>
+                </BaseButton>
+              </a>
             );
           })}
 

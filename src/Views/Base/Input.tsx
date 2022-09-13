@@ -23,7 +23,7 @@ export default function BaseInput({
       <Input
         label={label || LABEL}
         size={size || SIZE}
-        icon={<i className={iconName || ""} aria-hidden="true" />}
+        icon={<i className={iconName || "bi bi-search"} />}
         onChange={() => {
           if (func) func();
         }}
