@@ -11,7 +11,7 @@ function Header() {
 
   const Menus = ["Communities", "Competitions", "Learning"];
   return (
-    <Navbar className="mx-auto w-full max-w-none">
+    <Navbar className="mx-auto w-full max-w-none z-[9999]">
       <div className="mx-auto flex flex-row flex-wrap items-center justify-between">
         {/* Menus (DeepMeta, Communities, Competitions, Learning, Ranking, More) */}
         <div className="flex flex-[0_0_50%] justify-start items-center">
@@ -46,7 +46,7 @@ function Header() {
           </BaseButton>
           {showRakingDropdown && (
             <BaseDropdown
-              className="relative z-[9999]"
+              className="relative"
               onClose={() => {
                 setRankingDropdown(false);
               }}
