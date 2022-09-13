@@ -3,6 +3,7 @@ import { Navbar, Typography } from "@material-tailwind/react";
 import BaseButton from "../Base/Button";
 import BaseDropdown from "../Base/Dropdown";
 import BaseInput from "../Base/Input";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [showLanguageDropdown, setLanguageDropdown] = useState(false);
@@ -16,24 +17,24 @@ function Header() {
         {/* Menus (DeepMeta, Communities, Competitions, Learning, Ranking, More) */}
         <div className="flex flex-[0_0_50%] justify-start items-center">
           {/* Logo */}
-          <a href="/">
+          <Link to="/">
             <BaseButton className="text-transform: normal-case">
               <Typography variant="h5" className="" color="blue">
                 AutoDeep
               </Typography>
             </BaseButton>
-          </a>
+          </Link>
 
           {/* Communities, Competetions, and Learning buttons */}
           {Menus.map((menu) => {
             return (
-              <a href={menu === "Competitions" ? "/competitions" : "/"}>
+              <Link to={menu === "Competitions" ? "/competitions" : "/"}>
                 <BaseButton className="text-transform: normal-case">
                   <Typography variant="h6" color="gray" className="">
                     {menu}
                   </Typography>
                 </BaseButton>
-              </a>
+              </Link>
             );
           })}
 

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, BrowserRouter } from "react-router-dom";
 import Header from "./Layout/Header";
 import Main from "./Pages/Main";
 import Competitions from "./Pages/Competitions";
@@ -8,12 +8,10 @@ function App() {
   return (
     <div className="flex flex-col justify-center">
       <Header />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="competitions" element={<Competitions />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/competitions" element={<Competitions />} />
+      </Routes>
       <Footer />
     </div>
   );
