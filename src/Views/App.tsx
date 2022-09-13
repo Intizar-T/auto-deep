@@ -1,15 +1,13 @@
 import { BrowserRouter } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
-import Carousel from "./Carousel";
-import InfoBoard from "./InfoBoard";
+import Header from "./Layout/Header";
+import Main from "./Pages/Main";
+import Footer from "./Layout/Footer";
 
 function App() {
   return (
     <div className="flex flex-col justify-center">
       <Header />
-      <Carousel />
-      <InfoBoard />
+      <Main />
       <Footer />
     </div>
   );
