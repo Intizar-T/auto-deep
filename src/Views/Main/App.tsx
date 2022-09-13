@@ -1,4 +1,6 @@
+import { BrowserRouter } from "react-router-dom";
 import Header from "./Header";
+import Footer from "./Footer";
 import Carousel from "./Carousel";
 import InfoBoard from "./InfoBoard";
 
@@ -8,6 +10,7 @@ function App() {
       <Header />
       <Carousel />
       <InfoBoard />
+      <Footer />
     </div>
   );
 }
