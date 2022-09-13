@@ -11,7 +11,7 @@ function Header() {
 
   const Menus = ["Communities", "Competitions", "Learning"];
   return (
-    <Navbar className="mx-auto w-full">
+    <Navbar className="mx-auto w-full max-w-none">
       <div className="mx-auto flex flex-row flex-wrap items-center justify-between">
         {/* Menus (DeepMeta, Communities, Competitions, Learning, Ranking, More) */}
         <div className="flex flex-[0_0_50%] justify-start items-center">
@@ -160,7 +160,7 @@ function Header() {
         <div className="flex flex-[0_0_40%] justify-end items-center">
           {/* Search input */}
           <div className="w-52 mr-4">
-            <BaseInput label="Search" iconName="fas fa-heart" />
+            <BaseInput label="Search" />
           </div>
 
           {/* Language icon and dropdown */}
