@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Layout/Header";
 import Main from "./Pages/Main";
 import Competitions from "./Pages/Competitions";
