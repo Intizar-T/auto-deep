@@ -6,11 +6,9 @@ import BaseInput from "../Base/Input";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { WindowSizeData } from "../../Models/WindowSize/Data";
 import { useResizeDetector } from "react-resize-detector";
 import { Link } from "react-router-dom";
-
-const WINDOW_SIZE_MD = 1150;
-const WINDOW_SIZE_SM = 970;
 
 function Header() {
   const [showLanguageDropdown, setLanguageDropdown] = useState(false);
@@ -24,136 +22,167 @@ function Header() {
   return (
     <Navbar
       ref={ref}
-      className="w-full h-auto max-w-none z-[9999] ml-4 flex flex-row flex-wrap items-center justify-between"
+      className={`w-full h-auto max-w-none min-w-[${WindowSizeData["xs"]}px] z-[9999] sm:ml-4 flex flex-row flex-wrap items-center justify-between`}
     >
       {/* Menus (DeepMeta, Communities, Competitions, Learning, Ranking, More) */}
-      <div className="flex flex-auto justify-start items-center">
-        {/* Logo */}
-        <Link to="/">
-          <BaseButton className="text-transform: normal-case">
-            <Typography variant="h5" className="" color="blue">
-              AutoDeep
+      {width && width > WindowSizeData["sm"] ? (
+        <div className="flex flex-auto justify-start items-center">
+          <Link to="/">
+            <BaseButton className="text-transform: normal-case">
+              <Typography variant="h5" className="" color="blue">
+                AutoDeep
+              </Typography>
+            </BaseButton>
+          </Link>
+
+          {Menus.map((menu) => {
+            return (
+              <Link to={menu === "Competitions" ? "/competitions" : "/"}>
+                <BaseButton className="text-transform: normal-case">
+                  <Typography variant="h6" color="gray" className="">
+                    {menu}
+                  </Typography>
+                </BaseButton>
+              </Link>
+            );
+          })}
+
+          <BaseButton
+            className="text-transform: normal-case"
+            func={() => {
+              setRankingDropdown(true);
+            }}
+          >
+            <Typography variant="h6" color="gray" className="">
+              Ranking
             </Typography>
           </BaseButton>
-        </Link>
+          {showRakingDropdown && (
+            <BaseDropdown
+              className="relative"
+              onClose={() => {
+                setRankingDropdown(false);
+              }}
+              id="rankingDropdown"
+            >
+              <div className="absolute right-0 z-10 mt-6 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
+                <ul className="py-1 divide-gray-100 divide-y" role="none">
+                  <li>
+                    <BaseButton
+                      ripple={false}
+                      className="text-black shadow-none"
+                    >
+                      <Typography className="text-center text-sm">
+                        Ranking
+                      </Typography>
+                    </BaseButton>
+                  </li>
+                  <li>
+                    <BaseButton
+                      ripple={false}
+                      className="text-black shadow-none"
+                    >
+                      <Typography className="text-center text-sm">
+                        Tier System
+                      </Typography>
+                    </BaseButton>
+                  </li>
+                  <li>
+                    <BaseButton
+                      ripple={false}
+                      className="text-black shadow-none"
+                    >
+                      <Typography className="text-center text-sm">
+                        Interview
+                      </Typography>
+                    </BaseButton>
+                  </li>
+                </ul>
+              </div>
+            </BaseDropdown>
+          )}
 
-        {/* Communities, Competetions, and Learning buttons */}
-        {Menus.map((menu) => {
-          return (
-            <Link to={menu === "Competitions" ? "/competitions" : "/"}>
-              <BaseButton className="text-transform: normal-case">
-                <Typography variant="h6" color="gray" className="">
-                  {menu}
-                </Typography>
-              </BaseButton>
-            </Link>
-          );
-        })}
-
-        {/* Ranking button and dropdown */}
-        <BaseButton
-          className="text-transform: normal-case"
-          func={() => {
-            setRankingDropdown(true);
-          }}
-        >
-          <Typography variant="h6" color="gray" className="">
-            Ranking
-          </Typography>
-        </BaseButton>
-        {showRakingDropdown && (
-          <BaseDropdown
-            className="relative"
-            onClose={() => {
-              setRankingDropdown(false);
+          <BaseButton
+            className="text-transform: normal-case"
+            func={() => {
+              setMoreDropdown(true);
             }}
-            id="rankingDropdown"
           >
-            <div className="absolute right-0 z-10 mt-6 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
-              <ul className="py-1 divide-gray-100 divide-y" role="none">
-                <li>
-                  <BaseButton ripple={false} className="text-black shadow-none">
-                    <Typography className="text-center text-sm">
-                      Ranking
-                    </Typography>
-                  </BaseButton>
-                </li>
-                <li>
-                  <BaseButton ripple={false} className="text-black shadow-none">
-                    <Typography className="text-center text-sm">
-                      Tier System
-                    </Typography>
-                  </BaseButton>
-                </li>
-                <li>
-                  <BaseButton ripple={false} className="text-black shadow-none">
-                    <Typography className="text-center text-sm">
-                      Interview
-                    </Typography>
-                  </BaseButton>
-                </li>
-              </ul>
-            </div>
-          </BaseDropdown>
-        )}
-
-        {/* More Button and dropdown */}
-        <BaseButton
-          className="text-transform: normal-case"
-          func={() => {
-            setMoreDropdown(true);
-          }}
-        >
-          <Typography variant="h6" color="gray" className="">
-            More
-          </Typography>
-        </BaseButton>
-        {showMoreDropdown && (
-          <BaseDropdown
-            className="relative z-[9999]"
-            onClose={() => {
-              setMoreDropdown(false);
-            }}
-            id="moreDropdown"
-          >
-            <div className="absolute right-0 z-10 mt-6 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
-              <ul className="py-1 divide-gray-100 divide-y" role="none">
-                <li>
-                  <BaseButton ripple={false} className="text-black shadow-none">
-                    <Typography className="text-center text-sm">
-                      Notice
-                    </Typography>
-                  </BaseButton>
-                </li>
-                <li>
-                  <BaseButton ripple={false} className="text-black shadow-none">
-                    <Typography className="text-center text-sm">FAQ</Typography>
-                  </BaseButton>
-                </li>
-                <li>
-                  <BaseButton ripple={false} className="text-black shadow-none">
-                    <Typography className="text-sm">
-                      How to Participate
-                    </Typography>
-                  </BaseButton>
-                </li>
-                <li>
-                  <BaseButton ripple={false} className="text-black shadow-none">
-                    <Typography className="text-center text-sm">
-                      About Us
-                    </Typography>
-                  </BaseButton>
-                </li>
-              </ul>
-            </div>
-          </BaseDropdown>
-        )}
-      </div>
+            <Typography variant="h6" color="gray" className="">
+              More
+            </Typography>
+          </BaseButton>
+          {showMoreDropdown && (
+            <BaseDropdown
+              className="relative z-[9999]"
+              onClose={() => {
+                setMoreDropdown(false);
+              }}
+              id="moreDropdown"
+            >
+              <div className="absolute right-0 z-10 mt-6 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
+                <ul className="py-1 divide-gray-100 divide-y" role="none">
+                  <li>
+                    <BaseButton
+                      ripple={false}
+                      className="text-black shadow-none"
+                    >
+                      <Typography className="text-center text-sm">
+                        Notice
+                      </Typography>
+                    </BaseButton>
+                  </li>
+                  <li>
+                    <BaseButton
+                      ripple={false}
+                      className="text-black shadow-none"
+                    >
+                      <Typography className="text-center text-sm">
+                        FAQ
+                      </Typography>
+                    </BaseButton>
+                  </li>
+                  <li>
+                    <BaseButton
+                      ripple={false}
+                      className="text-black shadow-none"
+                    >
+                      <Typography className="text-sm">
+                        How to Participate
+                      </Typography>
+                    </BaseButton>
+                  </li>
+                  <li>
+                    <BaseButton
+                      ripple={false}
+                      className="text-black shadow-none"
+                    >
+                      <Typography className="text-center text-sm">
+                        About Us
+                      </Typography>
+                    </BaseButton>
+                  </li>
+                </ul>
+              </div>
+            </BaseDropdown>
+          )}
+        </div>
+      ) : (
+        <div className="flex flex-auto justify-start items-center">
+          <Link to="/">
+            <BaseButton className="text-transform: normal-case">
+              <Typography variant="h5" className="" color="blue">
+                AutoDeep
+              </Typography>
+            </BaseButton>
+          </Link>
+        </div>
+      )}
 
       {/* Search, Lang, Sing in and up */}
       <div className="flex flex-auto justify-end items-center">
         {/* Search input */}
-        {width && width > WINDOW_SIZE_MD ? (
+        {width && width > WindowSizeData["lg"] ? (
           <div className="w-52 2xl:w-80 mr-4">
             <BaseInput label="Search" />
           </div>
@@ -161,7 +190,9 @@ function Header() {
           <BaseButton>
             <SearchIcon
               className="text-gray-700"
-              fontSize={width && width > WINDOW_SIZE_SM ? "medium" : "medium"}
+              fontSize={
+                width && width > WindowSizeData["sm"] ? "medium" : "medium"
+              }
             />
           </BaseButton>
         )}
@@ -175,7 +206,9 @@ function Header() {
           >
             <LanguageIcon
               className="text-gray-700"
-              fontSize={width && width > WINDOW_SIZE_SM ? "medium" : "medium"}
+              fontSize={
+                width && width > WindowSizeData["sm"] ? "medium" : "medium"
+              }
             />
           </BaseButton>
           {showLanguageDropdown && (
@@ -215,7 +248,7 @@ function Header() {
         </div>
 
         {/* Sign in and up */}
-        {width && width > WINDOW_SIZE_SM ? (
+        {width && width > WindowSizeData["sm"] ? (
           <div>
             <BaseButton className="text-gray-600 text-md">Sign in</BaseButton>
             <BaseButton className="text-orange-300 text-md">Sign up</BaseButton>
@@ -229,7 +262,9 @@ function Header() {
             >
               <AccountCircleIcon
                 className="text-gray-700"
-                fontSize={width && width > WINDOW_SIZE_SM ? "medium" : "medium"}
+                fontSize={
+                  width && width > WindowSizeData["sm"] ? "medium" : "medium"
+                }
               />
             </BaseButton>
             {showAccountDropdown && (

@@ -16,11 +16,11 @@ function Competitions() {
     "Training the Wine Classification Model",
   ];
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full flex flex-row flex-wrap justify-center">
       {CarouselData.map((imgObj: { image: string }, index: number) => {
         return (
           <BaseButton className="text-transform: normal-case">
-            <BaseCard className="h-96 w-96 m-2">
+            <BaseCard className="h-72 w-72 sm:h-96 sm:w-96 m-2">
               <BaseCardHeader color="blue" className="mt-2 w-50 h-50">
                 <img
                   src={imgObj.image}
