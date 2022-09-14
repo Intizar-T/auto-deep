@@ -19,6 +19,7 @@ export default function BaseButton({
   size,
   color,
   ripple,
+  fullWidth,
   func,
 }: BaseButtonProps) {
   return (
@@ -28,6 +29,7 @@ export default function BaseButton({
       size={size || SIZE}
       ripple={ripple || RIPPLE}
       color={color || COLOR}
+      fullWidth={fullWidth || false}
       onClick={() => {
         if (func) func();
       }}

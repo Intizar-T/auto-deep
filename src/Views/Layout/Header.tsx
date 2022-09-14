@@ -16,16 +16,16 @@ function Header() {
   const [showMoreDropdown, setMoreDropdown] = useState(false);
   const [showAccountDropdown, setAccountDropdown] = useState(false);
   const { width, height, ref } = useResizeDetector();
-  console.log(width + ", " + height);
+  // console.log(width + ", " + height);
   const Menus = ["Communities", "Competitions", "Learning"];
 
   return (
     <Navbar
       ref={ref}
-      className={`w-full h-auto max-w-none min-w-[${WindowSizeData["xs"]}px] z-[9999] sm:ml-4 flex flex-row flex-wrap items-center justify-between`}
+      className={`w-full h-auto max-w-none min-w-[${WindowSizeData["xs"]}px] p-2 z-[9999] flex flex-row flex-wrap items-center justify-between`}
     >
       {/* Menus (DeepMeta, Communities, Competitions, Learning, Ranking, More) */}
-      {width && width > WindowSizeData["sm"] ? (
+      {width && width > WindowSizeData["md"] ? (
         <div className="flex flex-auto justify-start items-center">
           <Link to="/">
             <BaseButton className="text-transform: normal-case">
@@ -191,7 +191,7 @@ function Header() {
             <SearchIcon
               className="text-gray-700"
               fontSize={
-                width && width > WindowSizeData["sm"] ? "medium" : "medium"
+                width && width > WindowSizeData["md"] ? "medium" : "medium"
               }
             />
           </BaseButton>
@@ -207,7 +207,7 @@ function Header() {
             <LanguageIcon
               className="text-gray-700"
               fontSize={
-                width && width > WindowSizeData["sm"] ? "medium" : "medium"
+                width && width > WindowSizeData["md"] ? "medium" : "medium"
               }
             />
           </BaseButton>
@@ -248,7 +248,7 @@ function Header() {
         </div>
 
         {/* Sign in and up */}
-        {width && width > WindowSizeData["sm"] ? (
+        {width && width > WindowSizeData["md"] ? (
           <div>
             <BaseButton className="text-gray-600 text-md">Sign in</BaseButton>
             <BaseButton className="text-orange-300 text-md">Sign up</BaseButton>
@@ -263,7 +263,7 @@ function Header() {
               <AccountCircleIcon
                 className="text-gray-700"
                 fontSize={
-                  width && width > WindowSizeData["sm"] ? "medium" : "medium"
+                  width && width > WindowSizeData["md"] ? "medium" : "medium"
                 }
               />
             </BaseButton>
@@ -278,12 +278,18 @@ function Header() {
                 <div className="absolute right-0 z-10 mt-2 w-24 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
                   <ul className="py-1 divide-gray-100 divide-y" role="none">
                     <li>
-                      <BaseButton className="text-gray-600 text-sm">
+                      <BaseButton
+                        fullWidth={true}
+                        className="text-gray-600 text-sm"
+                      >
                         Sign in
                       </BaseButton>
                     </li>
                     <li>
-                      <BaseButton className="text-orange-300 text-sm">
+                      <BaseButton
+                        fullWidth={true}
+                        className="text-orange-300 text-sm"
+                      >
                         Sign up
                       </BaseButton>
                     </li>
