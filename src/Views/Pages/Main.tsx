@@ -31,7 +31,7 @@ function Main() {
             </Typography>
           </div>
         </Link>
-        <Competitions competitionNumber={6} />
+        <Competitions competitionNumber={6} gridView={true} />
       </div>
     </div>
   );
