@@ -6,7 +6,11 @@ import BaseButton from "../Base/Button";
 import { CarouselData } from "../../Models/Carousel/Data";
 import { Typography } from "@material-tailwind/react";
 
-function Competitions() {
+interface CompetitionsProps {
+  competitionNumber?: number;
+}
+
+function Competitions({ competitionNumber }: CompetitionsProps) {
   const competitionNames = [
     "Model Training for Classifying Varieties of Irises",
     "Predicting Fuel Efficiency of Cars",
@@ -15,12 +19,15 @@ function Competitions() {
     "Transfer Learning MNIST Model",
     "Training the Wine Classification Model",
   ];
+  const data = competitionNumber
+    ? CarouselData.slice(0, competitionNumber)
+    : CarouselData;
   return (
     <div className="w-full h-full flex flex-row flex-wrap justify-center">
-      {CarouselData.map((imgObj: { image: string }, index: number) => {
+      {data.map((imgObj: { image: string }, index: number) => {
         return (
           <BaseButton className="text-transform: normal-case">
-            <BaseCard className="h-72 w-72 sm:h-96 sm:w-96 m-2">
+            <BaseCard className="h-72 w-72 sm:h-96 sm:w-96 mr-2">
               <BaseCardHeader color="blue" className="mt-2 w-50 h-50">
                 <img
                   src={imgObj.image}

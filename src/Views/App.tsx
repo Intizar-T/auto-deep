@@ -11,7 +11,7 @@ function App() {
   const { width, height, ref } = useResizeDetector();
 
   return (
-    <div ref={ref} className="flex flex-col justify-center relative">
+    <div ref={ref} className="flex flex-col justify-center relative bg-gray-50">
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
