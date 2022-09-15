@@ -3,7 +3,7 @@ import InfoBoard from "../Layout/InfoBoard";
 import { WindowSizeData } from "../../Models/WindowSize/Data";
 import { useResizeDetector } from "react-resize-detector";
 import { Typography } from "@material-tailwind/react";
-import Competitions from "./Competitions";
+import Competitions from "./Competition/Competitions";
 import { Link } from "react-router-dom";
 
 function Main() {

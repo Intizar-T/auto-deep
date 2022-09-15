@@ -37,7 +37,7 @@ function Header() {
 
           {Menus.map((menu) => {
             return (
-              <Link to={menu === "Competitions" ? "/competitions" : "/"}>
+              <Link to={menu === "Competitions" ? "competitions" : "/"}>
                 <BaseButton className="text-transform: normal-case">
                   <Typography variant="h6" color="gray" className="">
                     {menu}
