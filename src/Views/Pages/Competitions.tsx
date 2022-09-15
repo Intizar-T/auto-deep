@@ -4,6 +4,8 @@ import BaseCardBody from "../Base/Card/CardBody";
 import BaseCardFooter from "../Base/Card/CardFooter";
 import BaseButton from "../Base/Button";
 import { CarouselData } from "../../Models/Carousel/Data";
+import { WindowSizeData } from "../../Models/WindowSize/Data";
+import { useResizeDetector } from "react-resize-detector";
 import { Typography } from "@material-tailwind/react";
 
 interface CompetitionsProps {
@@ -12,6 +14,8 @@ interface CompetitionsProps {
 }
 
 function Competitions({ competitionNumber, gridView }: CompetitionsProps) {
+  const { width, height, ref } = useResizeDetector();
+
   const competitionNames = [
     "Model Training for Classifying Varieties of Irises",
     "Predicting Fuel Efficiency of Cars",
@@ -20,12 +24,22 @@ function Competitions({ competitionNumber, gridView }: CompetitionsProps) {
     "Transfer Learning MNIST Model",
     "Training the Wine Classification Model",
   ];
+  const competitionThemes = "Algorithms | Vision | Neural Network | Regression";
   const data = competitionNumber
     ? CarouselData.slice(0, competitionNumber)
     : CarouselData;
 
+  const imageSize =
+    width &&
+    (width < WindowSizeData["xsm"]
+      ? "w-16 h-16"
+      : width < WindowSizeData["xmd"]
+      ? "w-20 h-20"
+      : "w-24 h-24");
+
   return (
     <div
+      ref={ref}
       className={`w-full h-full flex flex-${
         gridView ? "row" : "col"
       } flex-wrap justify-center`}
