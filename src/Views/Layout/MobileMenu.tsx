@@ -35,18 +35,16 @@ function MobileMenu() {
     >
       {icons.map((icon: JSX.Element, index: number) => {
         return (
-          <div>
-            <BaseButton
-              key={index}
-              fullWidth={true}
-              className="text-transform: normal-case text-black"
-            >
-              <Link to={linkTo[index]}>
-                {icon}
-                <Typography variant="small">{names[index]}</Typography>
-              </Link>
-            </BaseButton>
-          </div>
+          <BaseButton
+            key={index}
+            fullWidth={true}
+            className="text-transform: normal-case text-black flex-shrink-0 flex-grow w-fit"
+          >
+            <Link to={linkTo[index]}>
+              {icon}
+              <Typography variant="small">{names[index]}</Typography>
+            </Link>
+          </BaseButton>
         );
       })}
     </Navbar>
