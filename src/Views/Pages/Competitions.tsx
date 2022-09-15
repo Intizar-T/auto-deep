@@ -64,7 +64,7 @@ function Competitions({ competitionNumber, gridView }: CompetitionsProps) {
                         : competitionNames[index]}
                     </Typography>
                     <Typography className="text-sm">
-                      Algorithms | Vision | Neural Network | Regression
+                      {competitionThemes}
                     </Typography>
                     <div className="flex flex-row justify-center items-center">
                       <img
@@ -113,7 +113,7 @@ function Competitions({ competitionNumber, gridView }: CompetitionsProps) {
                   <BaseCardBody>
                     <div className="flex flex-row justify-between">
                       <div className="flex flex-row justify-start mr-2">
-                        <div className="w-24 h-24">
+                        <div className={imageSize ? imageSize : ""}>
                           <img
                             src={imgObj.image}
                             alt="dummy images"
@@ -121,8 +121,56 @@ function Competitions({ competitionNumber, gridView }: CompetitionsProps) {
                             className="h-full w-full block object-cover"
                           />
                         </div>
+                        <div className="flex flex-col justify-between pl-2">
+                          <Typography
+                            variant={
+                              width && width < WindowSizeData["xsm"]
+                                ? "h6"
+                                : "h5"
+                            }
+                            className=" flex justify-start"
+                          >
+                            {competitionNames[index].length > 30
+                              ? competitionNames[index].substring(0, 30) + "..."
+                              : competitionNames[index]}
+                          </Typography>
+                          <Typography className="text-sm flex justify-start">
+                            {competitionThemes}
+                          </Typography>
+                          <div className="flex flex-row justify-start items-center">
+                            <img
+                              className="h-6 w-15 mr-2"
+                              src="https://dacon.s3.ap-northeast-2.amazonaws.com/competition/235978/logo1.jpeg"
+                              alt=""
+                            />
+                            <img
+                              className="h-6 w-15 mr-2"
+                              src="https://dacon.s3.ap-northeast-2.amazonaws.com/competition/235953/logo1.jpeg"
+                              alt=""
+                            />
+                            <img
+                              className="h-6 w-15 mr-2"
+                              src="https://dacon.s3.ap-northeast-2.amazonaws.com/competition/235927/logo1.jpeg"
+                              alt=""
+                            />
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex justify-end"></div>
+                      <div className="flex flex-col justify-between">
+                        <Typography
+                          color="green"
+                          className="text-sm flex items-center"
+                          variant="h6"
+                        >
+                          ● Active
+                        </Typography>
+                        <Typography className="text-sm flex items-center">
+                          D-10 | 500 people
+                        </Typography>
+                        <Typography variant="h6" className="flex items-center">
+                          5M Price
+                        </Typography>
+                      </div>
                     </div>
                   </BaseCardBody>
                 </BaseCard>
