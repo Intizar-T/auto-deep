@@ -24,7 +24,21 @@ function Competitions({ competitionNumber, gridView }: CompetitionsProps) {
     "Transfer Learning MNIST Model",
     "Training the Wine Classification Model",
   ];
+  const competitionNamesLength = width
+    ? width < WindowSizeData["xs"]
+      ? 0.05
+      : width < WindowSizeData["md"]
+      ? 0.06
+      : 0.075
+    : 0.05;
   const competitionThemes = "Algorithms | Vision | Neural Network | Regression";
+  const competitionThemesLength = width
+    ? width < WindowSizeData["xs"]
+      ? 0.06
+      : width < WindowSizeData["md"]
+      ? 0.075
+      : 0.1
+    : 0.06;
   const data = competitionNumber
     ? CarouselData.slice(0, competitionNumber)
     : CarouselData;
@@ -121,56 +135,88 @@ function Competitions({ competitionNumber, gridView }: CompetitionsProps) {
                             className="h-full w-full block object-cover"
                           />
                         </div>
-                        <div className="flex flex-col justify-between pl-2">
+                        <div className={`flex flex-col justify-between pl-2`}>
                           <Typography
                             variant={
-                              width && width < WindowSizeData["xsm"]
+                              width && width < WindowSizeData["sm"]
                                 ? "h6"
                                 : "h5"
                             }
-                            className=" flex justify-start"
+                            className=" flex justify-start flex-shrink-0"
                           >
-                            {competitionNames[index].length > 30
-                              ? competitionNames[index].substring(0, 30) + "..."
+                            {width &&
+                            competitionNames[index].length >
+                              Math.floor(competitionNamesLength * width)
+                              ? competitionNames[index].substring(
+                                  0,
+                                  Math.floor(competitionNamesLength * width)
+                                ) + "..."
                               : competitionNames[index]}
                           </Typography>
                           <Typography className="text-sm flex justify-start">
-                            {competitionThemes}
+                            {width &&
+                            competitionThemes.length >
+                              Math.floor(competitionThemesLength * width)
+                              ? competitionThemes.substring(
+                                  0,
+                                  Math.floor(competitionThemesLength * width)
+                                ) + "..."
+                              : competitionThemes}
                           </Typography>
-                          <div className="flex flex-row justify-start items-center">
-                            <img
-                              className="h-6 w-15 mr-2"
-                              src="https://dacon.s3.ap-northeast-2.amazonaws.com/competition/235978/logo1.jpeg"
-                              alt=""
-                            />
-                            <img
-                              className="h-6 w-15 mr-2"
-                              src="https://dacon.s3.ap-northeast-2.amazonaws.com/competition/235953/logo1.jpeg"
-                              alt=""
-                            />
-                            <img
-                              className="h-6 w-15 mr-2"
-                              src="https://dacon.s3.ap-northeast-2.amazonaws.com/competition/235927/logo1.jpeg"
-                              alt=""
-                            />
-                          </div>
+                          {width && width > WindowSizeData["sm"] ? (
+                            <div className="flex flex-row justify-start items-center">
+                              <img
+                                className="h-6 w-15 mr-2"
+                                src="https://dacon.s3.ap-northeast-2.amazonaws.com/competition/235978/logo1.jpeg"
+                                alt=""
+                              />
+                              <img
+                                className="h-6 w-15 mr-2"
+                                src="https://dacon.s3.ap-northeast-2.amazonaws.com/competition/235953/logo1.jpeg"
+                                alt=""
+                              />
+                              <img
+                                className="h-6 w-15 mr-2"
+                                src="https://dacon.s3.ap-northeast-2.amazonaws.com/competition/235927/logo1.jpeg"
+                                alt=""
+                              />
+                            </div>
+                          ) : (
+                            <div className="flex flex-row">
+                              <Typography
+                                color="green"
+                                className="text-sm flex items-end mr-2"
+                                variant="h6"
+                              >
+                                D-10
+                              </Typography>
+                              <Typography className="text-sm flex items-start">
+                                ● 500 people
+                              </Typography>
+                            </div>
+                          )}
                         </div>
                       </div>
-                      <div className="flex flex-col justify-between">
-                        <Typography
-                          color="green"
-                          className="text-sm flex items-center"
-                          variant="h6"
-                        >
-                          ● Active
-                        </Typography>
-                        <Typography className="text-sm flex items-center">
-                          D-10 | 500 people
-                        </Typography>
-                        <Typography variant="h6" className="flex items-center">
-                          5M Price
-                        </Typography>
-                      </div>
+                      {width && width > WindowSizeData["sm"] && (
+                        <div className="flex flex-col justify-between">
+                          <Typography
+                            color="green"
+                            className="text-sm flex items-center"
+                            variant="h6"
+                          >
+                            ● Active
+                          </Typography>
+                          <Typography className="text-sm flex items-center">
+                            D-10 | 500 people
+                          </Typography>
+                          <Typography
+                            variant="h6"
+                            className="flex items-center"
+                          >
+                            5M Price
+                          </Typography>
+                        </div>
+                      )}
                     </div>
                   </BaseCardBody>
                 </BaseCard>

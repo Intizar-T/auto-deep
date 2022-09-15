@@ -16,7 +16,7 @@ function Main() {
       {width && width > WindowSizeData["md"] && <InfoBoard />}
       <div className="w-auto h-auto m-6 sm:m-8 md:m-12 flex flex-col justify-center">
         <Link to={"/competitions"}>
-          <div className="flex flex-row ml-4">
+          <div className="flex flex-row">
             <Typography
               variant={typographyVariant}
               className="flex items-start"
