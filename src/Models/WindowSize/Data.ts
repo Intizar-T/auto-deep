@@ -1,5 +1,5 @@
 export const WindowSizeData = {
-  lg: 1150,
+  lg: 1280,
   md: 970,
   xmd: 780,
   sm: 670,
