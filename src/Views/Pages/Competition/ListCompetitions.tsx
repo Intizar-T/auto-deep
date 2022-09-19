@@ -3,7 +3,6 @@ import BaseCardBody from "../../Base/Card/CardBody";
 import BaseButton from "../../Base/Button";
 import { CarouselData } from "../../../Models/Carousel/Data";
 import { WindowSizeData } from "../../../Models/WindowSize/Data";
-import { useResizeDetector } from "react-resize-detector";
 import { Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
