@@ -7,7 +7,7 @@ import Competitions from "./Competition/Competitions";
 import { Link } from "react-router-dom";
 
 function Main() {
-  const { width, height, ref } = useResizeDetector();
+  const { width, ref } = useResizeDetector();
   const typographyVariant =
     width && width < WindowSizeData["xsm"] ? "h6" : "h4";
   return (
@@ -31,7 +31,7 @@ function Main() {
             </Typography>
           </div>
         </Link>
-        <Competitions competitionNumber={6} gridView={true} />
+        <Competitions gridView={true} />
       </div>
     </div>
   );
