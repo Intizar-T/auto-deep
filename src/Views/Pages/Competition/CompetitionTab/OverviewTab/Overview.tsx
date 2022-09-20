@@ -1,6 +1,10 @@
+import OverviewSummary from "./OverviewSummary";
+import OverviewRules from "./OverviewRules";
+import OverviewCalendar from "./OverviewCalendar";
+import OverviewAgreement from "./OverviewAgreement";
+import OverviewReward from "./OverviewReward";
 import { Typography } from "@material-tailwind/react";
 import BaseButton from "../../../../Base/Button";
-import { dummyData } from "../../../../../Models/Competitions/Overview";
 import SummarizeOutlinedIcon from "@mui/icons-material/SummarizeOutlined";
 import RuleOutlinedIcon from "@mui/icons-material/RuleOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
@@ -59,60 +63,11 @@ export default function Overview() {
           <Typography>Agreement</Typography>
         </BaseButton>
       </div>
-      {overview === "summary" && (
-        <div className="flex flex-col border-l-2 pl-4">
-          <div className="flex flex-col mt-8">
-            <Typography variant="h4">Background</Typography>
-            <Typography className="w-fit h-auto mb-8 mt-4">
-              {dummyData["summary"]}
-            </Typography>
-          </div>
-          <div className="flex flex-col mt-8">
-            <Typography variant="h4">Topic</Typography>
-            <Typography className="w-fit h-auto mb-8 mt-4">
-              {dummyData["topic"]}
-            </Typography>
-          </div>
-          <div className="flex flex-col mt-8">
-            <Typography variant="h4">Explanation</Typography>
-            <Typography className="w-fit h-auto mb-8 mt-4">
-              {dummyData["explanation"]}
-            </Typography>
-          </div>
-          <div className="flex flex-col mt-8">
-            <Typography variant="h4">Organizer</Typography>
-            <Typography className="w-fit h-auto mb-8 mt-4">
-              {dummyData["organizer"]}
-            </Typography>
-          </div>
-          <div className="flex flex-col mt-8">
-            <Typography variant="h4">Eligibility</Typography>
-            <Typography className="w-fit h-auto mb-8 mt-4">
-              {dummyData["eligibility"]}
-            </Typography>
-          </div>
-        </div>
-      )}
-      {overview === "rules" && (
-        <div className="flex flex-col border-l-2 pl-4">
-          <Typography variant="h4">Rules</Typography>
-        </div>
-      )}
-      {overview === "calendar" && (
-        <div className="flex flex-col border-l-2 pl-4">
-          <Typography variant="h4">Calendar</Typography>
-        </div>
-      )}
-      {overview === "reward" && (
-        <div className="flex flex-col border-l-2 pl-4">
-          <Typography variant="h4">Reward</Typography>
-        </div>
-      )}
-      {overview === "agreement" && (
-        <div className="flex flex-col border-l-2 pl-4">
-          <Typography variant="h4">Agreement</Typography>
-        </div>
-      )}
+      {overview === "summary" && <OverviewSummary />}
+      {overview === "rules" && <OverviewRules />}
+      {overview === "calendar" && <OverviewCalendar />}
+      {overview === "reward" && <OverviewReward />}
+      {overview === "agreement" && <OverviewAgreement />}
     </div>
   );
 }
