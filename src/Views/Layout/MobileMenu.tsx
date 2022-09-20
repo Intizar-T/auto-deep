@@ -31,7 +31,7 @@ function MobileMenu() {
   return (
     <Navbar
       ref={ref}
-      className="bg-blue-gray-50 overflow-x-auto h-16 fixed bottom-0 left-0 p-0 flex flex-row"
+      className="bg-blue-gray-50 overflow-x-auto h-18 fixed bottom-0 left-0 p-0 flex flex-row"
     >
       {icons.map((icon: JSX.Element, index: number) => {
         return (

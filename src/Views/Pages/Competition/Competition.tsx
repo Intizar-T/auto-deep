@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import CompetitionFlyer from "./CompetitionFlyer";
-import CompetitionTabs from "./CompetitionTab";
+import CompetitionTab from "./CompetitionTab";
 import { useResizeDetector } from "react-resize-detector";
 
 function Competition() {
@@ -12,7 +12,7 @@ function Competition() {
   return (
     <div ref={ref} className="w-full h-auto">
       <CompetitionFlyer width={width} competitionId={competitionId} />
-      <CompetitionTabs />
+      <CompetitionTab />
     </div>
   );
 }
