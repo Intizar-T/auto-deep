@@ -1,6 +1,6 @@
 import { Tabs, TabsHeader, Tab } from "@material-tailwind/react";
 import { useState } from "react";
-import CompetitionOverview from "./CompetitionOverview";
+import Overview from "./OverviewTab/Overview";
 
 interface tabDataProps {
   label: string;
@@ -10,9 +10,8 @@ interface tabDataProps {
 
 export default function CompetitionTab() {
   const [clickedTab, setClickedTab] = useState("overview");
-  console.log(clickedTab);
   const tabData = [
-    { label: "Overview", value: "overview", data: <CompetitionOverview /> },
+    { label: "Overview", value: "overview", data: <Overview /> },
     { label: "Data", value: "data", data: <div></div> },
     { label: "Code", value: "code", data: <div></div> },
     { label: "Talk", value: "talk", data: <div></div> },
@@ -37,7 +36,7 @@ export default function CompetitionTab() {
           ))}
         </TabsHeader>
       </Tabs>
-      {clickedTab === "overview" && <CompetitionOverview />}
+      {clickedTab === "overview" && <Overview />}
       {clickedTab === "data" && <div></div>}
       {clickedTab === "code" && <div></div>}
       {clickedTab === "talk" && <div></div>}

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import CompetitionFlyer from "./CompetitionFlyer";
-import CompetitionTab from "./CompetitionTab";
+import CompetitionTab from "./CompetitionTab/CompetitionTab";
 import { useResizeDetector } from "react-resize-detector";
 
 function Competition() {

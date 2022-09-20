@@ -1,6 +1,6 @@
 import { Typography } from "@material-tailwind/react";
-import BaseButton from "../../Base/Button";
-import { dummyData } from "../../../Models/Competitions/Overview";
+import BaseButton from "../../../../Base/Button";
+import { dummyData } from "../../../../../Models/Competitions/Overview";
 import SummarizeOutlinedIcon from "@mui/icons-material/SummarizeOutlined";
 import RuleOutlinedIcon from "@mui/icons-material/RuleOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
@@ -8,7 +8,7 @@ import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
 import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
 import { useState } from "react";
 
-export default function CompetitionOverview() {
+export default function Overview() {
   const [overview, setOverview] = useState("summary");
   return (
     <div className="flex flex-row border-x-2 border-y-2">

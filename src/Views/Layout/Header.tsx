@@ -15,8 +15,7 @@ function Header() {
   const [showRakingDropdown, setRankingDropdown] = useState(false);
   const [showMoreDropdown, setMoreDropdown] = useState(false);
   const [showAccountDropdown, setAccountDropdown] = useState(false);
-  const { width, height, ref } = useResizeDetector();
-  // console.log(width + ", " + height);
+  const { width, ref } = useResizeDetector();
   const Menus = ["Communities", "Competitions", "Learning"];
 
   return (
