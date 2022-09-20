@@ -18,7 +18,7 @@ interface CompetitionFlyerProps {
 function CompetitionFlyer({ width, competitionId }: CompetitionFlyerProps) {
   const joinText =
     width && width > WindowSizeData["md"] ? "Join Competition" : "Join";
-  const mobileView = width && width < WindowSizeData["xsm"];
+  const mobileView = width && width < WindowSizeData["sm"];
   return (
     <div className="w-full h-auto">
       <div
@@ -76,21 +76,15 @@ function CompetitionFlyer({ width, competitionId }: CompetitionFlyerProps) {
           </div>
         </div>
         <div className="flex items-end mt-2">
-          <BaseButton
-            variant="outlined"
-            color="white"
-            className={`h-${mobileView ? "10" : "12"} mr-2`}
-          >
+          <BaseButton variant="outlined" color="white" className={`h-10 mr-2`}>
             <ShareOutlinedIcon
               className="text-white"
-              fontSize={mobileView ? "medium" : "large"}
+              fontSize={mobileView ? "medium" : "medium"}
             />
           </BaseButton>
           <BaseButton
             func={() => {}}
-            className={`bg-white text-transform: normal-case h-${
-              mobileView ? "10" : "12"
-            }`}
+            className={`bg-white text-transform: normal-case flex items-center h-10`}
           >
             <Typography className="text-black">{joinText}</Typography>
           </BaseButton>

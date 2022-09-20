@@ -24,9 +24,13 @@ export default function CompetitionTab({ width }: CompetitionTabProps) {
     { label: "Team", value: "team", data: <div></div> },
     { label: "Submission", value: "submission", data: <div></div> },
   ];
+  const mobileMode = width && width < WindowSizeData["sm"];
   return (
     <div>
-      <Tabs value="html" className="sticky -top-1 bg-white border-y-1">
+      <Tabs
+        value="html"
+        className={`${mobileMode ? "" : "sticky"} -top-1 bg-white border-y-1`}
+      >
         <TabsHeader className="h-14 bg-gray-200 overflow-x-auto">
           {tabData.map((objects: tabDataProps) => (
             <Tab

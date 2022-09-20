@@ -24,12 +24,14 @@ export default function Overview({ width }: OverviewProps) {
     <div
       className={`flex flex-${
         mobileMode ? "col" : "row"
-      } border-x-2 border-y-2`}
+      } border-x-2 border-y-02`}
     >
       <div
         className={`flex flex-${
-          mobileMode ? "row overflow-x-auto border-y-2" : "col"
-        } mr-4 mt-2 h-full sticky top-14`}
+          mobileMode
+            ? "bg-gray-200 row overflow-x-auto border-y-2 -top-1 rounded-lg justify-between h-14 items-center"
+            : "col mr-4 mt-2 top-14"
+        } h-full sticky`}
       >
         <BaseButton
           func={() => {
