@@ -12,11 +12,9 @@ function Competitions({ gridView }: CompetitionsProps) {
   return (
     <div
       ref={ref}
-      className={`w-full h-full flex flex-${
-        gridView ? "row" : "col"
-      } flex-wrap justify-center`}
+      className={`w-full h-full flex flex-${gridView ? "row" : "col"}`}
     >
-      {gridView ? GridCompetitons() : ListCompetitions(width)}
+      {gridView ? <GridCompetitons width={width} /> : ListCompetitions(width)}
     </div>
   );
 }
