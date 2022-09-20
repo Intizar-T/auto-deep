@@ -11,59 +11,83 @@ import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined
 import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
 import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
 import { useState } from "react";
+import { WindowSizeData } from "../../../../../Models/WindowSize/Data";
 
-export default function Overview() {
+interface OverviewProps {
+  width: number | undefined;
+}
+
+export default function Overview({ width }: OverviewProps) {
   const [overview, setOverview] = useState("summary");
+  const mobileMode = width && width < WindowSizeData["sm"];
   return (
-    <div className="flex flex-row border-x-2 border-y-2">
-      <div className="flex flex-col mr-4 mt-2 h-full sticky top-14">
+    <div
+      className={`flex flex-${
+        mobileMode ? "col" : "row"
+      } border-x-2 border-y-2`}
+    >
+      <div
+        className={`flex flex-${
+          mobileMode ? "row overflow-x-auto border-y-2" : "col"
+        } mr-4 mt-2 h-full sticky top-14`}
+      >
         <BaseButton
           func={() => {
             setOverview("summary");
           }}
-          className="pl-12 text-transform: normal-case text-black text-left flex flex-row"
+          className={`${
+            mobileMode ? "flex-shrink-0" : "pl-12"
+          } text-transform: normal-case text-black text-left flex flex-row`}
         >
-          <SummarizeOutlinedIcon className="mr-2" />
+          {!mobileMode && <SummarizeOutlinedIcon className="mr-2" />}
           <Typography>Summary</Typography>
         </BaseButton>
         <BaseButton
           func={() => {
             setOverview("rules");
           }}
-          className="pl-12 text-transform: normal-case text-black text-left flex flex-row"
+          className={`${
+            mobileMode ? "flex-shrink-0" : "pl-12"
+          } text-transform: normal-case text-black text-left flex flex-row`}
         >
-          <RuleOutlinedIcon className="mr-2" />
+          {!mobileMode && <RuleOutlinedIcon className="mr-2" />}
           <Typography>Rules</Typography>
         </BaseButton>
         <BaseButton
           func={() => {
             setOverview("calendar");
           }}
-          className="pl-12 text-transform: normal-case text-black text-left flex flex-row"
+          className={`${
+            mobileMode ? "flex-shrink-0" : "pl-12"
+          } text-transform: normal-case text-black text-left flex flex-row`}
         >
-          <CalendarMonthOutlinedIcon className="mr-2" />
+          {!mobileMode && <CalendarMonthOutlinedIcon className="mr-2" />}
           <Typography>Calendar</Typography>
         </BaseButton>
         <BaseButton
           func={() => {
             setOverview("reward");
           }}
-          className="pl-12 text-transform: normal-case text-black text-left flex flex-row"
+          className={`${
+            mobileMode ? "flex-shrink-0" : "pl-12"
+          } text-transform: normal-case text-black text-left flex flex-row`}
         >
-          <EmojiEventsOutlinedIcon className="mr-2" />
+          {!mobileMode && <EmojiEventsOutlinedIcon className="mr-2" />}
           <Typography>Reward</Typography>
         </BaseButton>
         <BaseButton
           func={() => {
             setOverview("agreement");
           }}
-          className="pl-12 text-transform: normal-case text-black text-left flex flex-row"
+          className={`${
+            mobileMode ? "flex-shrink-0" : "pl-12"
+          } text-transform: normal-case text-black text-left flex flex-row`}
         >
-          <HandshakeOutlinedIcon className="mr-2" />
+          {!mobileMode && <HandshakeOutlinedIcon className="mr-2" />}
           <Typography>Agreement</Typography>
         </BaseButton>
       </div>
-      {overview === "summary" && <OverviewSummary />}
+      {overview === "summary" && <OverviewSummary width={width} />}
       {overview === "rules" && <OverviewRules />}
       {overview === "calendar" && <OverviewCalendar />}
       {overview === "reward" && <OverviewReward />}

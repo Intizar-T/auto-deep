@@ -1,5 +1,6 @@
 import { Tabs, TabsHeader, Tab } from "@material-tailwind/react";
 import { useState } from "react";
+import { WindowSizeData } from "../../../../Models/WindowSize/Data";
 import Overview from "./OverviewTab/Overview";
 
 interface tabDataProps {
@@ -8,10 +9,14 @@ interface tabDataProps {
   data: JSX.Element;
 }
 
-export default function CompetitionTab() {
+interface CompetitionTabProps {
+  width: number | undefined;
+}
+
+export default function CompetitionTab({ width }: CompetitionTabProps) {
   const [clickedTab, setClickedTab] = useState("overview");
   const tabData = [
-    { label: "Overview", value: "overview", data: <Overview /> },
+    { label: "Overview", value: "overview", data: <Overview width={width} /> },
     { label: "Data", value: "data", data: <div></div> },
     { label: "Code", value: "code", data: <div></div> },
     { label: "Talk", value: "talk", data: <div></div> },
@@ -22,7 +27,7 @@ export default function CompetitionTab() {
   return (
     <div>
       <Tabs value="html" className="sticky -top-1 bg-white border-y-1">
-        <TabsHeader className="h-14 bg-gray-200 overflow-x-auto min-w-[300px]">
+        <TabsHeader className="h-14 bg-gray-200 overflow-x-auto">
           {tabData.map((objects: tabDataProps) => (
             <Tab
               key={objects["value"]}
@@ -36,7 +41,7 @@ export default function CompetitionTab() {
           ))}
         </TabsHeader>
       </Tabs>
-      {clickedTab === "overview" && <Overview />}
+      {clickedTab === "overview" && <Overview width={width} />}
       {clickedTab === "data" && <div></div>}
       {clickedTab === "code" && <div></div>}
       {clickedTab === "talk" && <div></div>}

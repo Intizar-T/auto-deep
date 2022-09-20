@@ -12,7 +12,7 @@ function Competition() {
   return (
     <div ref={ref} className="w-full h-auto">
       <CompetitionFlyer width={width} competitionId={competitionId} />
-      <CompetitionTab />
+      <CompetitionTab width={width} />
     </div>
   );
 }
