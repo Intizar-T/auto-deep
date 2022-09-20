@@ -10,11 +10,13 @@ import MobileMenu from "./Layout/MobileMenu";
 
 function App() {
   const { width, ref } = useResizeDetector();
-
+  const mobileMode = width && width < WindowSizeData["sm"];
   return (
     <div ref={ref} className="flex flex-col justify-center relative">
       <Header />
-      <div className="w-full h-full p-16 pt-0 bg-gray-50">
+      <div
+        className={`w-full h-full ${mobileMode ? "" : "p-16 pt-0"} bg-gray-50`}
+      >
         <Routes>
           <Route index element={<Main />} />
           <Route path="/" element={<Main />} />

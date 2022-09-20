@@ -31,7 +31,11 @@ export default function CompetitionTab({ width }: CompetitionTabProps) {
         value="html"
         className={`${mobileMode ? "" : "sticky"} -top-1 bg-white border-y-1`}
       >
-        <TabsHeader className="h-14 bg-gray-200 overflow-x-auto">
+        <TabsHeader
+          className={`h-${
+            mobileMode ? "18" : "14"
+          } bg-gray-200 overflow-x-auto flex justify-between`}
+        >
           {tabData.map((objects: tabDataProps) => (
             <Tab
               key={objects["value"]}
@@ -39,6 +43,7 @@ export default function CompetitionTab({ width }: CompetitionTabProps) {
               onClick={() => {
                 setClickedTab(objects["value"]);
               }}
+              className={`w-24 flex-shrink-0`}
             >
               {objects["label"]}
             </Tab>
