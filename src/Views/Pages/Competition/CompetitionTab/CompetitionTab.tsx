@@ -32,9 +32,7 @@ export default function CompetitionTab({ width }: CompetitionTabProps) {
         className={`${mobileMode ? "" : "sticky"} -top-1 bg-white border-y-1`}
       >
         <TabsHeader
-          className={`h-${
-            mobileMode ? "18" : "14"
-          } bg-gray-200 overflow-x-auto flex justify-between`}
+          className={`h-14 bg-gray-200 overflow-x-auto flex justify-between`}
         >
           {tabData.map((objects: tabDataProps) => (
             <Tab
